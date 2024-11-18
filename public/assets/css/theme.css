@@ -541,6 +541,11 @@ progress {
   }
 }
 
+.bg-sphBlue{
+  background-color: #007bff;
+}
+
+
 .display-5 {
   font-size: calc(1.425rem + 2.1vw);
   font-weight: 700;

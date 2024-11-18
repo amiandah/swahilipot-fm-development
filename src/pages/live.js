@@ -26,10 +26,10 @@ const LivePage = () => {
           });
       }
     }
-  }, [setIsPlaying]);
+  }, [audioRef, setIsPlaying]);
 
   return (
-    <section className="content-space-t-3">
+    <section className="content-space-t-4">
       <Header />
       <main className="content">
         <div className="container mt-4">
