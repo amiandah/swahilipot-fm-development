@@ -4,46 +4,8 @@ import Link from 'next/link'
 import style from '../styles/Header.module.css'
 
 const Header = () => {
-  const audioRef = useRef(null)
-  const [isPlaying, setIsPlaying] = useState(false)
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.play().catch((error) => {
-        console.log('Autoplay failed:', error)
-        setIsPlaying(false)
-      })
-    }
-  }, [])
-
-  const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause()
-      } else {
-        audioRef.current.play().catch((error) => {
-          console.log('Play failed:', error)
-          setIsPlaying(false)
-        })
-      }
-      setIsPlaying(!isPlaying)
-    }
-  }
-
   return (
     <>
-      <audio
-        className='d-none'
-        ref={audioRef}
-        controls
-        autoPlay
-      >
-        <source
-          src='https://swahilipotfm.out.airtime.pro/swahilipotfm_a?_ga=2.140975346.1118176404.1720613685-1678527295.1702105127'
-          type='audio/mpeg'
-        />
-        Your browser does not support the audio element.
-      </audio>
       <header
         className={`navbar navbar-expand-lg navbar-light ${style.header}`}
       >
@@ -60,12 +22,11 @@ const Header = () => {
           <div
             className={`d-block d-lg-none ${style['livestream-mobile']}`}
           >
-            <button
-              className={`btn ${style['listen-live-btn']}`}
-              onClick={togglePlay}
-            >
-              {isPlaying ? 'Pause' : 'Listen Live'}
-            </button>
+            <Link href='/live' legacyBehavior>
+              <a className={`btn ${style['listen-live-btn']}`}>
+                Listen Live
+              </a>
+            </Link>
           </div>
           <button
             className='navbar-toggler'
@@ -96,6 +57,11 @@ const Header = () => {
                     ></span>
                   </a>
                 </Link>
+              </li>
+              <li
+                className={`nav-item ${style['nav-item']}`}
+              >
+                
               </li>
               <li
                 className={`nav-item ${style['nav-item']}`}
@@ -170,12 +136,11 @@ const Header = () => {
               <li
                 className={`nav-item d-none d-lg-block ${style['nav-item']}`}
               >
-                <button
-                  className={`btn ${style['listen-live-btn']}`}
-                  onClick={togglePlay}
-                >
-                  {isPlaying ? 'Pause' : 'Listen Live'}
-                </button>
+                <Link href='/live' legacyBehavior>
+                  <a className={`btn ${style['listen-live-btn']}`}>
+                    Listen Live
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>
