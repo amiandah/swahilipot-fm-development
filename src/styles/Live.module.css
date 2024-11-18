@@ -4,13 +4,19 @@
   padding: 2rem;
 }
 
-.audioSection {
+.audioSection,
+.videoSection {
   margin-bottom: 2rem;
   background: linear-gradient(135deg, #3B2E7F, #007bff);
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: white;
+}
+
+.videoSection {
+  background: #f8f9fa;
+  color: #333;
 }
 
 .audioInfo {
@@ -50,21 +56,19 @@
 }
 
 .sectionTitle {
-  color: white;
   margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 600;
 }
 
-.hiddenVideo {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+  margin-top: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -72,7 +76,8 @@
     padding: 1rem;
   }
   
-  .audioSection {
+  .audioSection,
+  .videoSection {
     padding: 1.5rem;
   }
   

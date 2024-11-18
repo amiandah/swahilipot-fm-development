@@ -1,9 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, useContext } from 'react'
 import Link from 'next/link'
 import style from '../styles/Header.module.css'
+import { AudioContext } from '../context/AudioContext'
 
 const Header = () => {
+  const { isPlaying, togglePlay } = useContext(AudioContext)
+
   return (
     <>
       <header
@@ -23,8 +26,11 @@ const Header = () => {
             className={`d-block d-lg-none ${style['livestream-mobile']}`}
           >
             <Link href='/live' legacyBehavior>
-              <a className={`btn ${style['listen-live-btn']}`}>
-                Listen Live
+              <a 
+                className={`btn ${style['listen-live-btn']}`}
+                onClick={togglePlay}
+              >
+                {isPlaying ? 'Pause' : 'Listen Live'}
               </a>
             </Link>
           </div>
@@ -126,7 +132,7 @@ const Header = () => {
                   <a
                     className={`nav-link ${style['nav-link']}`}
                   >
-                    About SwahilipotFM
+                    About
                     <span
                       className={style['music-bars']}
                     ></span>
@@ -140,7 +146,7 @@ const Header = () => {
                   <a
                     className={`nav-link ${style['nav-link']}`}
                   >
-                    Join Our Youth Database
+                    Join Us
                     <span
                       className={style['music-bars']}
                     ></span>
@@ -151,8 +157,11 @@ const Header = () => {
                 className={`nav-item d-none d-lg-block ${style['nav-item']}`}
               >
                 <Link href='/live' legacyBehavior>
-                  <a className={`btn ${style['listen-live-btn']}`}>
-                    Listen Live
+                  <a 
+                    className={`btn ${style['listen-live-btn']}`}
+                    onClick={togglePlay}
+                  >
+                    {isPlaying ? 'Pause' : 'Listen Live'}
                   </a>
                 </Link>
               </li>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ContactSection from './Contactsection';
@@ -6,22 +6,27 @@ import VideoPlayer from '@/components/VideoPlayer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRadio, faMusic } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Live.module.css';
+import { AudioContext } from '../context/AudioContext';
 
 const LivePage = () => {
-  const audioRef = useRef(null);
+  const { audioRef, setIsPlaying } = useContext(AudioContext);
 
   useEffect(() => {
-    // Attempt to play audio when component mounts
     if (audioRef.current) {
       const playPromise = audioRef.current.play();
       
       if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.log("Autoplay prevented:", error);
-        });
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch(error => {
+            console.log("Autoplay prevented:", error);
+            setIsPlaying(false);
+          });
       }
     }
-  }, []);
+  }, [setIsPlaying]);
 
   return (
     <section className="content-space-t-3">
@@ -55,9 +60,12 @@ const LivePage = () => {
               </div>
             </div>
 
-            {/* Video Player - Hidden but still playing */}
-            <div className={styles.hiddenVideo}>
-              <VideoPlayer />
+            {/* Video Player */}
+            <div className={styles.videoSection}>
+              <h2 className={styles.sectionTitle}>Live Video Stream</h2>
+              <div className={styles.videoWrapper}>
+                <VideoPlayer />
+              </div>
             </div>
           </div>
         </div>
