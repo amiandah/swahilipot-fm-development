@@ -6,24 +6,32 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "gray-matter": "^4.0.3",
     "@videojs/http-streaming": "^3.13.2",
     "bootstrap": "^5.3.3",
+    "date-fns": "^3.6.0",
+    "fs": "^0.0.1-security",
+    "gray-matter": "^4.0.3",
     "ldrs": "^1.0.2",
+    "markdowntohtml": "^0.0.3",
     "next": "14.1.4",
     "react": "^18",
     "react-bootstrap": "^2.10.4",
     "react-dom": "^18",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
     "video.js": "^8.17.2"
   },
   "devDependencies": {
+    "@slicemachine/adapter-next": "^0.3.49",
     "eslint": "^8",
-    "eslint-config-next": "14.1.4"
+    "eslint-config-next": "14.1.4",
+    "slice-machine-ui": "^2.7.1"
   }
 }
