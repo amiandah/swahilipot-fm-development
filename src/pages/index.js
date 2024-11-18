@@ -16,7 +16,7 @@ const Home = () => {
         <div className='content-wrapper'>
           <div className='content-column'>
             <Hero />
-            <VideoPlayer />
+            {/* <VideoPlayer /> */}
           </div>
         </div>
       </main>
