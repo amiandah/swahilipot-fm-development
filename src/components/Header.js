@@ -168,6 +168,20 @@ const Header = () => {
                 </Link>
               </li>
               <li
+                className={`nav-item ${style['nav-item']}`}
+              >
+                <Link href='/#youth-database-section' legacyBehavior>
+                  <a
+                    className={`nav-link ${style['nav-link']}`}
+                  >
+                    Join Our Youth Database
+                    <span
+                      className={style['music-bars']}
+                    ></span>
+                  </a>
+                </Link>
+              </li> 
+              <li
                 className={`nav-item d-none d-lg-block ${style['nav-item']}`}
               >
                 <button
