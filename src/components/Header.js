@@ -161,7 +161,8 @@ const Header = () => {
                     className={`btn ${style['listen-live-btn']}`}
                     onClick={togglePlay}
                   >
-                    {isPlaying ? 'Pause' : 'Listen Live'}
+                    {/*isPlaying ? 'Pause' : 'Listen Live'*/}
+                    Listen Live
                   </a>
                 </Link>
               </li>
