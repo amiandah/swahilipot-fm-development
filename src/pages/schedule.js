@@ -1,28 +1,22 @@
 import Header from "@/components/Header";
 import Footer from "../components/Footer";
 import ContactSection from "../pages/Contactsection";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from '../styles/Schedule.module.css';
 import { Table, Button } from 'react-bootstrap';
 
 function Schedule() {
     const [selectedTab, setSelectedTab] = useState('Monday');
 
-    const tabs = [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-    ];
+    const tabs = useMemo(() => {
+        return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    }, []);
 
     useEffect(() => {
         const currentDayIndex = new Date().getDay(); 
         const currentDay = tabs[currentDayIndex];
         setSelectedTab(currentDay); 
-    }, []);
+    }, [tabs]);
 
     const handleTabClick = (tab) => {
         setSelectedTab(tab);

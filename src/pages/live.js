@@ -26,7 +26,7 @@ const LivePage = () => {
           });
       }
     }
-  }, [setIsPlaying]);
+  }, [ audioRef,setIsPlaying ]);
 
   return (
     <section className="content-space-t-3">
