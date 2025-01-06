@@ -1,22 +1,22 @@
 import Header from "@/components/Header";
 import Footer from "../components/Footer";
 import ContactSection from "../pages/Contactsection";
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from '../styles/Schedule.module.css';
 import { Table, Button } from 'react-bootstrap';
 
 function Schedule() {
     const [selectedTab, setSelectedTab] = useState('Monday');
 
-    const tabs = [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-    ];
+    const tabs = useMemo(() => {
+        return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    }, []);
+
+    useEffect(() => {
+        const currentDayIndex = new Date().getDay(); 
+        const currentDay = tabs[currentDayIndex];
+        setSelectedTab(currentDay); 
+    }, [tabs]);
 
     const handleTabClick = (tab) => {
         setSelectedTab(tab);
@@ -24,32 +24,46 @@ function Schedule() {
 
     const scheduleData = {
         'Sunday': [
-            { time: '08:00 - 12:00', title: 'Morning Gospel', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
-            { time: '12:00 - 16:00', title: 'Sunday Afternoon Mix', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '06:00am - 10:00am', title: 'Fresh Music Vibe', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
         ],
         'Monday': [
-            { time: '07:00 - 11:00', title: 'The Breakfast Vibe', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
-            { time: '11:00 - 16:00', title: 'Fresh Music Blue Vibe', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '06:00am - 10:00am', title: 'The Breakfast Club', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '10:00am - 11:00am', title: 'Kick Off', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '11:00am - 2:00pm', title: 'Swahilipot Cafe', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '3:00pm - 7:00pm', title: 'Swahilipot Drive', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '7:00pm - 10:00pm', title: 'The Night Shift', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
         ],
         'Tuesday': [
-            { time: '09:00 - 12:00', title: 'Tue-Morning Show', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
-            { time: '12:00 - 15:00', title: 'Lunchtime Mix', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '06:00am - 10:00am', title: 'The Breakfast Club', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '10:00am - 11:00am', title: 'Kick Off', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '11:00am - 2:00pm', title: 'Swahilipot Cafe', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '3:00pm - 7:00pm', title: 'Swahilipot Drive', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '7:00pm - 10:00pm', title: 'The Night Shift', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
         ],
         'Wednesday': [
-            { time: '09:00 - 12:00', title: 'Wed-Morning Show', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
-            { time: '12:00 - 15:00', title: 'Lunchtime Mix', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '06:00am - 10:00am', title: 'The Breakfast Club', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '10:00am - 11:00am', title: 'Kick Off', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '11:00am - 2:00pm', title: 'Swahilipot Cafe', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '3:00pm - 7:00pm', title: 'Swahilipot Drive', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '7:00pm - 10:00pm', title: 'The Night Shift', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
         ],
         'Thursday': [
-            { time: '09:00 - 12:00', title: 'Thur-Morning Show', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
-            { time: '12:00 - 15:00', title: 'Lunchtime Mix', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '06:00am - 10:00am', title: 'The Breakfast Club', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '10:00am - 11:00am', title: 'Kick Off', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '11:00am - 2:00pm', title: 'Swahilipot Cafe', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '3:00pm - 7:00pm', title: 'Swahilipot Drive', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '7:00pm - 10:00pm', title: 'The Night Shift', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
         ],
         'Friday': [
-            { time: '09:00 - 12:00', title: 'Fri-Morning Show', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
-            { time: '12:00 - 15:00', title: 'Lunchtime Mix', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '06:00am - 10:00am', title: 'The Breakfast Club', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '10:00am - 11:00am', title: 'Kick Off', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '11:00am - 2:00pm', title: 'Swahilipot Cafe', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '3:00pm - 7:00pm', title: 'Swahilipot Drive', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '7:00pm - 10:00pm', title: 'The Night Shift', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
         ],
         'Saturday': [
-            { time: '09:00 - 12:00', title: 'Sat-Morning Show', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
-            { time: '12:00 - 15:00', title: 'Lunchtime Mix', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '08:00am - 11:00am', title: 'Mikuki Ya Maneno', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
+            { time: '11:00am - 2:00pm', title: 'Swahilipot Aroma', voiceover: 'Voiceover by: SWAHILIPOTFM', presenterImage: '/user.jpg' },
         ],
     };
 
